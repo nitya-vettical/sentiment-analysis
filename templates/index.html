@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.725);
+            font-family: Helvetica system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        .team-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content-overlay {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            margin: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #e50914;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #810707;
+        }
+
+        .sentiment {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .positive {
+            color: lightgreen;
+        }
+
+        .negative {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="team-name">
+            <span>4 Brain Cells</span>
+        </div>
+    </div>
+    <div class="content-overlay">
+        <h1>Enter some text for sentiment analysis:</h1>
+        <form method="post">
+            <input type="text" name="text" placeholder="Enter text for analysis">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        {% if sentiment %}
+        <p
+            class="sentiment {% if sentiment == 'Positive' %}positive{% elif sentiment == 'Negative' %}negative{% endif %}">
+            Sentiment: {{ sentiment }}
+        </p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
